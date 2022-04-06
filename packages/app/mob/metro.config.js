@@ -1,17 +1,23 @@
-/**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
- *
- * @format
- */
+const path = require('path');
+
+const nodeModulesPaths = [path.resolve(path.join(__dirname, './node_modules'))];
+
+const watchFolders = [
+  path.resolve(`${__dirname}/../../shared/`),
+  path.resolve(`${__dirname}/../../../node_modules`),
+];
 
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
       transform: {
-        experimentalImportSupport: false,
+        experimentalImportSupport: true,
         inlineRequires: true,
       },
     }),
   },
+  resolver: {
+    nodeModulesPaths,
+  },
+  watchFolders,
 };

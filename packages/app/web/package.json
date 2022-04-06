@@ -1,8 +1,9 @@
 {
-  "name": "web",
+  "name": "@monorep/web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@monorep/api-module": "1.0.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -17,7 +18,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -33,5 +34,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1",
+    "ts-loader": "^9.2.8"
   }
 }
