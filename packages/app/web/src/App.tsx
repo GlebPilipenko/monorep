@@ -8,7 +8,7 @@ const App = (): ReactElement => {
   useEffect(() => {
     (async () => {
       const instance = createApiInstance({
-        baseURL: 'https://jsonplaceholder.typicode.com/',
+        baseURL: process.env.REACT_APP_BASE_URL,
       });
       const response = await instance.get('posts');
 

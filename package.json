@@ -2,6 +2,10 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "start-web": "cp .env packages/app/web && lerna run --scope=@monorep/web start",
+    "start-mob-server": "cp .env packages/app/mob && lerna run --scope=@monorep/mob start",
+    "start-android": "lerna run --scope=@monorep/mob android",
+    "start-ios": "lerna run --scope=@monorep/mob ios",
     "bootstrap": "npx lerna clean --yes && npx rimfar node_modules && npx lerna bootstrap"
   },
   "devDependencies": {
@@ -22,6 +26,6 @@
   },
   "workspaces": {
     "packages": ["packages/*/*"],
-    "nohoist": ["**/react-native", "**/react-native/**"]
+    "nohoist": ["**/react-native", "**/react-native/**", "**react-native-config", "**react-native-config/**"]
   }
 }
