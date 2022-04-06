@@ -1,24 +1,24 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 
 import { createApiInstance } from '@monorep/api-module';
 import { Text } from 'react-native';
 
-const App = (): ReactElement => {
-  const [data, setData] = useState<any>([]);
+import { REACT_APP_BASE_URL } from './envConfig';
 
+const App = (): ReactElement => {
   useEffect(() => {
     (async () => {
       const instance = createApiInstance({
-        baseURL: 'https://jsonplaceholder.typicode.com/',
+        baseURL: REACT_APP_BASE_URL,
       });
 
       const response = await instance.get('posts');
 
-      setData([...response.data]);
+      console.log(response.data);
     })();
   }, []);
 
-  return <Text>{JSON.stringify(data)}</Text>;
+  return <Text>Mobile app</Text>;
 };
 
 export default App;
