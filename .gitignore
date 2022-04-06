@@ -1,5 +1,5 @@
 node_modules/
 .idea
-lerna-debug-log
+lerna-debug.log
 npm-debug.log
 .DS_Store
