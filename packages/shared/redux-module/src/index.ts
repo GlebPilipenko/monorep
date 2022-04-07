@@ -1,3 +1,3 @@
 export { webStore } from './store';
-export { setPosts } from './store/actions';
-export { useActions } from './hooks';
+export { setPosts, ACTIONS } from './store/actions';
+export { customBindActionCreators } from './utils';

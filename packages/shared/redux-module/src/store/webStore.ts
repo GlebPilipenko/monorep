@@ -4,8 +4,10 @@ import { createGlobalStore, getRootReducer } from '../utils';
 
 import { postsReducer } from './reducers';
 
-const reducer = {
+const state = {
   posts: postsReducer,
 };
 
-export const webStore = createGlobalStore(storage, getRootReducer(reducer));
+export type WebStateType = typeof state;
+
+export const webStore = createGlobalStore(storage, getRootReducer(state as WebStateType));

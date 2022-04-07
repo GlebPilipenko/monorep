@@ -4,8 +4,13 @@ import { createGlobalStore, getRootReducer } from '../utils';
 
 import { postsReducer } from './reducers';
 
-const reducer = {
+const state = {
   posts: postsReducer,
 };
 
-export const mobileStore = createGlobalStore(AsyncStorage, getRootReducer({ reducer }));
+export type MobileStateType = typeof state;
+
+export const mobileStore = createGlobalStore(
+  AsyncStorage,
+  getRootReducer(state as MobileStateType),
+);

@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { useActions } from '@monorep/redux-module/src';
 import { useSelector } from 'react-redux';
 
+import { useActions } from './hooks';
 import { selectPosts } from './selectors';
 
 const App = (): ReactElement => {
