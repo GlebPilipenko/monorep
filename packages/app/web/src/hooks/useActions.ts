@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 
 const ALL_ACTIONS = { ...ACTIONS };
 
-type AllActionsType = typeof ALL_ACTIONS;
-
-export const useActions = (): AllActionsType => {
+export const useActions = (): any => {
   const dispatch = useDispatch();
 
   return customBindActionCreators(ALL_ACTIONS, dispatch);

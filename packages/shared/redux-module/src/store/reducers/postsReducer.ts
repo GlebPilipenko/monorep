@@ -13,7 +13,7 @@ const postsReducer = createSlice({
   initialState,
   reducers: {
     setPosts: (state: CounterType, action: PayloadAction<string[]>): void => {
-      state.posts = [...state.posts, ...action.payload];
+      state.posts = [...action.payload];
     },
   },
 });
