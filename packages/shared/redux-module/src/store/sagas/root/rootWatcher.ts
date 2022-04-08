@@ -1,8 +1,8 @@
-import { all } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 
-import mobileRootSaga from './mobileRootSaga';
-import webRootSaga from './webRootSaga';
+import { SagaActionType } from '../../../enums';
+import { SetPostsSagaWorker } from '../posts';
 
 export default function* rootWatcher(): Generator {
-  yield all([mobileRootSaga(), webRootSaga()]);
+  yield takeLatest(SagaActionType.SetPosts, SetPostsSagaWorker);
 }

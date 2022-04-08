@@ -1,3 +1,2 @@
-export { webStore } from './store';
-export { setPosts, ACTIONS } from './store/actions';
-export { customBindActionCreators } from './utils';
+export { useActions, useAppSelector } from './hooks';
+export { ProvideredRootComponent } from './components/provideredRootComponent';

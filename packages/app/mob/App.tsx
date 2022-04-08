@@ -1,24 +1,28 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { createApiInstance } from '@monorep/api-module';
+import {
+  ProvideredRootComponent,
+  useActions,
+  useAppSelector,
+} from '@monorep/redux-module/src';
+import { selectPosts } from '@monorep/redux-module/src/store/selectors';
 import { Text } from 'react-native';
 
-import { REACT_APP_BASE_URL } from './envConfig';
-
 const App = (): ReactElement => {
+  const posts = useAppSelector(selectPosts);
+
+  const { setPosts } = useActions();
+
   useEffect(() => {
-    (async () => {
-      const instance = createApiInstance({
-        baseURL: REACT_APP_BASE_URL,
-      });
-
-      const response = await instance.get('posts');
-
-      console.log(response.data);
-    })();
+    setPosts();
   }, []);
 
-  return <Text>Mobile app</Text>;
+  return (
+    <ProvideredRootComponent platform="mobile">
+      <Text>Mobile app</Text>
+      <Text>{JSON.stringify(posts)}</Text>
+    </ProvideredRootComponent>
+  );
 };
 
 export default App;

@@ -1,12 +1,10 @@
-import React, { ReactElement, useEffect } from 'react';
+import { FC, ReactElement, useEffect } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useActions, useAppSelector } from '@monorep/redux-module/src';
+import { selectPosts } from '@monorep/redux-module/src/store/selectors';
 
-import { useActions } from './hooks';
-import { selectPosts } from './selectors';
-
-const App = (): ReactElement => {
-  const posts = useSelector(selectPosts);
+const App: FC = (): ReactElement => {
+  const posts = useAppSelector(selectPosts);
 
   const { setPosts } = useActions();
 

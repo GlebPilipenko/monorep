@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SliceCaseReducers } from '@reduxjs/toolkit/src/createSlice';
 
 export type CounterType = {
   posts: string[];
@@ -8,7 +9,11 @@ const initialState = {
   posts: [],
 };
 
-const postsReducer = createSlice({
+export const postsReducer = createSlice<
+  CounterType,
+  SliceCaseReducers<CounterType>,
+  string
+>({
   name: 'posts',
   initialState,
   reducers: {
@@ -19,5 +24,3 @@ const postsReducer = createSlice({
 });
 
 export const { setPosts } = postsReducer.actions;
-
-export default postsReducer.reducer;
