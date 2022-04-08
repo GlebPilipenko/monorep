@@ -26,6 +26,15 @@
   },
   "workspaces": {
     "packages": ["packages/*/*"],
-    "nohoist": ["**/react-native", "**/react-native/**", "**react-native-config", "**react-native-config/**"]
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**",
+      "**react-native-config",
+      "**react-native-config/**",
+      "**@react-native-community/async-storage",
+      "**@react-native-community/async-storage/**",
+      "**@react-redux",
+      "**@react-redux/**"
+    ]
   }
 }

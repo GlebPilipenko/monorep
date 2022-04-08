@@ -1,20 +1,20 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { createApiInstance } from '@monorep/api-module';
+import { useSelector } from 'react-redux';
 
-import './App.css';
+import { useActions } from './hooks';
+import { selectPosts } from './selectors';
 
 const App = (): ReactElement => {
-  useEffect(() => {
-    (async () => {
-      const instance = createApiInstance({
-        baseURL: process.env.REACT_APP_BASE_URL,
-      });
-      const response = await instance.get('posts');
+  const posts = useSelector(selectPosts);
 
-      console.log(response.data);
-    })();
+  const { setPosts } = useActions();
+
+  useEffect(() => {
+    setPosts();
   }, []);
+
+  console.log(posts);
 
   return <h1>Web app</h1>;
 };

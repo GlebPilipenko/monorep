@@ -1,0 +1,14 @@
+{
+  "name": "@monorep/redux-module",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
+    "@reduxjs/toolkit": "^1.8.1",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-saga": "^1.1.3"
+  }
+}
