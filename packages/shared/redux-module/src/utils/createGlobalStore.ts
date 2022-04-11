@@ -1,6 +1,14 @@
 import { AsyncStorageStatic } from '@react-native-community/async-storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist/es/constants';
 import { WebStorage } from 'redux-persist/es/types';
 import createSagaMiddleware from 'redux-saga';
 
@@ -16,12 +24,15 @@ export const createGlobalStore = (persistStorage: AsyncStorageStatic | WebStorag
   const sagaMiddleware = createSagaMiddleware();
   const persistConfig = { key: 'root', storage: persistStorage };
   const persistedReducer = persistReducer(persistConfig, rootReducer);
+
   const store = configureStore({
     reducer: persistedReducer,
-    middleware: (getDefaultMiddleware): any => [
-      ...getDefaultMiddleware(),
-      sagaMiddleware,
-    ],
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }).concat(sagaMiddleware),
   });
 
   sagaMiddleware.run(rootWatcher);
