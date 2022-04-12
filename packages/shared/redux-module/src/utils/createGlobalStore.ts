@@ -18,9 +18,10 @@ import { rootWatcher } from '../store/sagas/root';
 export const rootReducer = combineReducers({ postsList: postsReducer.reducer });
 
 export type RootStateType = ReturnType<typeof rootReducer>;
+export type PersistStorageType = AsyncStorageStatic | WebStorage;
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const createGlobalStore = (persistStorage: AsyncStorageStatic | WebStorage) => {
+export const createGlobalStore = (persistStorage: PersistStorageType) => {
   const sagaMiddleware = createSagaMiddleware();
   const persistConfig = { key: 'root', storage: persistStorage };
   const persistedReducer = persistReducer(persistConfig, rootReducer);
