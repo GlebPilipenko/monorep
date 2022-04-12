@@ -8,7 +8,7 @@ import {
 import { selectPosts } from '@monorep/redux-module/src/store/selectors';
 import { Text } from 'react-native';
 
-const App = (): ReactElement => {
+const Main = (): ReactElement | null => {
   const posts = useAppSelector(selectPosts);
 
   const { setPosts } = useActions();
@@ -18,11 +18,17 @@ const App = (): ReactElement => {
   }, []);
 
   return (
-    <ProvideredRootComponent platform="mobile">
+    <>
       <Text>Mobile app</Text>
       <Text>{JSON.stringify(posts)}</Text>
-    </ProvideredRootComponent>
+    </>
   );
 };
+
+const App = (): ReactElement => (
+  <ProvideredRootComponent platform="mobile">
+    <Main />
+  </ProvideredRootComponent>
+);
 
 export default App;

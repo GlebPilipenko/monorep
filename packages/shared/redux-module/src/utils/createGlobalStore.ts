@@ -1,4 +1,4 @@
-import { AsyncStorageStatic } from '@react-native-community/async-storage';
+import { AsyncStorageStatic } from '@react-native-async-storage/async-storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import {
