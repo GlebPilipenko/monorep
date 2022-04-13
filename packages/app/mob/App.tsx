@@ -1,24 +1,40 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import { createApiInstance } from '@monorep/api-module';
+import {
+  ProvideredRootComponent,
+  useActions,
+  useAppSelector,
+} from '@monorep/redux-module/src';
+import { selectPosts } from '@monorep/redux-module/src/store/selectors';
+import { createGlobalStore } from '@monorep/redux-module/src/utils';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text } from 'react-native';
 
-import { REACT_APP_BASE_URL } from './envConfig';
+const Main = (): ReactElement | null => {
+  const posts = useAppSelector(selectPosts);
 
-const App = (): ReactElement => {
+  const { setPosts } = useActions();
+
   useEffect(() => {
-    (async () => {
-      const instance = createApiInstance({
-        baseURL: REACT_APP_BASE_URL,
-      });
-
-      const response = await instance.get('posts');
-
-      console.log(response.data);
-    })();
+    setPosts();
   }, []);
 
-  return <Text>Mobile app</Text>;
+  return (
+    <>
+      <Text>Mobile app</Text>
+      <Text>{JSON.stringify(posts)}</Text>
+    </>
+  );
+};
+
+const App = (): ReactElement => {
+  const { store } = createGlobalStore(AsyncStorage);
+
+  return (
+    <ProvideredRootComponent store={store}>
+      <Main />
+    </ProvideredRootComponent>
+  );
 };
 
 export default App;

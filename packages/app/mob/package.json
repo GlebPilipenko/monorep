@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@monorep/api-module": "1.0.0",
+    "@monorep/redux-module": "1.0.0",
+    "@react-native-async-storage/async-storage": "^1.17.3",
     "react": "17.0.2",
     "react-native": "0.68.0",
     "react-native-config": "^1.4.5"
