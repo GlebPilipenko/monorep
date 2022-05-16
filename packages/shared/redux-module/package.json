@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@monorep/api-module": "1.0.0",
     "@react-native-async-storage/async-storage": "^1.17.3",
     "@reduxjs/toolkit": "^1.8.1",
     "react-redux": "^7.2.8",

@@ -17,7 +17,7 @@ export const postsReducer = createSlice<
   name: 'posts',
   initialState,
   reducers: {
-    setPosts: (state: CounterType, action: PayloadAction<string[]>): void => {
+    setPosts: (state: CounterType, action: PayloadAction<any[]>): void => {
       state.posts = [...action.payload];
     },
   },
